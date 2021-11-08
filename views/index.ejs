@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food App Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+     crossorigin="anonymous">
+    <style>
+
+      .header {
+        padding: 60px;
+        text-align: center;
+        background: #1d04aa;
+        color: black;
+        font-family: Times 'Times New Roman', serif;
+        font-size: 30px;
+      }
+      .search {
+        border: none;
+        color: black;
+        padding: 15px 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      .button {
+        background-color: #ddd; /* Gray */
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
+      .table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .table td, .table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .table tr:nth-child(even){background-color: #f2f2f2;}
+      .table tr:hover {background-color: #ddd;}
+      .table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #06050e;
+        color: white;
+      }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Food Recipe App</h1>
+    <form class="" action="/getrecipe" method="GET">
+      <p>Search your Favorite Recipe</p>     
+      <input type="text" class="search" name="recipe" placeholder="Type Here">
+      <button type="submit" class="button">Search</button> 
+    </form>            
+  </div>
+  <div>
+  </div>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Image of the Food</th>
+          <th scope="col">Area </th>
+          <th scope="col">Instructions</th>
+          <th scope="col">Delete</th>     
+        </tr>
+      </thead>
+      <tbody>
+        <%recipeList.forEach(recipe => {%>
+            <tr>
+                <th scope="row"><%= recipe.title %></th>
+                <td><%= recipe.image %></td>
+                <td><%= recipe.area %></td>
+                <td><%= recipe.instructions %></td>
+                <td><a href="/deleterecipe?title=<%= recipe.title %>">Delete</a></td>
+            </tr>           
+        <%})%>
+      </tbody>
+  </table>
+</body>
+</html>
